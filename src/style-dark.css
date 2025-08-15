@@ -1,4 +1,4 @@
-.sudoku-main-window {
+.sudoku-main-window, .how-to-play-dialog {
     background-color: #5a3a29;
 }
 
@@ -62,3 +62,9 @@
 .note-cell-label {
     color: #d9c3ae;
 }
+
+/* How to play dialog styling */
+/* .how-to-play-dialog .card {
+    background-color: #00000040;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+} */

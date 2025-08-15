@@ -1,0 +1,216 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $HowToPlayDialog: Adw.Dialog {
+  content-height: 750;
+  content-width: 600;
+  css-classes: ["how-to-play-dialog"];
+
+  Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {
+      title-widget: Adw.WindowTitle {
+        title: _("Sudoku");
+      };
+    }
+
+    ScrolledWindow {
+      Box {
+        orientation: vertical;
+        spacing: 24;
+        margin-start: 24;
+        margin-end: 24;
+        margin-top: 24;
+        margin-bottom: 24;
+
+        Box {
+          orientation: vertical;
+          spacing: 12;
+
+          Label {
+            label: _("Sudoku Rules");
+            css-classes: ["title-1"];
+          }
+
+          Label {
+            label: _("Fill the 9×9 grid with numbers so that each row, column, and 3×3 box contains the digits 1-9 without repetition.");
+            css-classes: ["body"];
+            wrap: true;
+            xalign: 0;
+          }
+        }
+
+        Separator {}
+
+        Box {
+          orientation: vertical;
+          spacing: 16;
+
+          Label {
+            label: _("1. No repeated numbers in 3×3 blocks");
+            css-classes: ["title-3"];
+            xalign: 0;
+          }
+
+          Label {
+            label: _("Each 3×3 box must contain all digits from 1 to 9 without any repetition.");
+            css-classes: ["body"];
+            wrap: true;
+            xalign: 0;
+          }
+
+          Box {
+            css-classes: ["card"];
+            margin-top: 8;
+            margin-bottom: 8;
+
+            Box {
+              orientation: vertical;
+              spacing: 8;
+
+              Label {
+                label: _("Graphics: 3×3 block highlighting");
+                css-classes: ["caption"];
+                xalign: 0;
+              }
+
+              Picture {
+                // Placeholder for 3x3 block SVG
+                css-classes: ["dim-label"];
+                height-request: 120;
+                width-request: 120;
+              }
+            }
+          }
+        }
+
+        Box {
+          orientation: vertical;
+          spacing: 16;
+
+          Label {
+            label: _("2. No repeated numbers in rows");
+            css-classes: ["title-3"];
+            xalign: 0;
+          }
+
+          Label {
+            label: _("Each row must contain all digits from 1 to 9 without any repetition.");
+            css-classes: ["body"];
+            wrap: true;
+            xalign: 0;
+          }
+
+          Box {
+            css-classes: ["card"];
+            margin-top: 8;
+            margin-bottom: 8;
+
+            Box {
+              orientation: vertical;
+              spacing: 8;
+
+              Label {
+                label: _("Graphics: Row highlighting");
+                css-classes: ["caption"];
+                xalign: 0;
+              }
+
+              Picture {
+                // Placeholder for row SVG
+                css-classes: ["dim-label"];
+                height-request: 120;
+                width-request: 120;
+              }
+            }
+          }
+        }
+
+        Box {
+          orientation: vertical;
+          spacing: 16;
+
+          Label {
+            label: _("3. No repeated numbers in columns");
+            css-classes: ["title-3"];
+            xalign: 0;
+          }
+
+          Label {
+            label: _("Each column must contain all digits from 1 to 9 without any repetition.");
+            css-classes: ["body"];
+            wrap: true;
+            xalign: 0;
+          }
+
+          Box {
+            css-classes: ["card"];
+            margin-top: 8;
+            margin-bottom: 8;
+
+            Box {
+              orientation: vertical;
+              spacing: 8;
+
+              Label {
+                label: _("Graphics: Column highlighting");
+                css-classes: ["caption"];
+                xalign: 0;
+              }
+
+              Picture {
+                // Placeholder for column SVG
+                css-classes: ["dim-label"];
+                height-request: 120;
+                width-request: 120;
+              }
+            }
+          }
+        }
+
+        Separator {}
+
+        Box {
+          orientation: vertical;
+          spacing: 16;
+
+          Label {
+            label: _("Error Detection");
+            css-classes: ["title-2"];
+            xalign: 0;
+          }
+
+          Label {
+            label: _("When you make a mistake, the game will highlight the conflicting cells in red to show you what's wrong.");
+            css-classes: ["body"];
+            wrap: true;
+            xalign: 0;
+          }
+
+          Box {
+            css-classes: ["card"];
+            margin-top: 8;
+            margin-bottom: 8;
+
+            Box {
+              orientation: vertical;
+              spacing: 8;
+
+              Label {
+                label: _("Graphics: Error highlighting (red cells)");
+                css-classes: ["caption"];
+                xalign: 0;
+              }
+
+              Picture {
+                css-classes: ["dim-label"];
+                height-request: 120;
+                width-request: 120;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

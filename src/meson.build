@@ -9,6 +9,7 @@ blueprint_files = files(
   'window.blp',
   'gtk/help-overlay.blp',
   'gtk/finished-overlay.blp',
+  'gtk/how-to-play-dialog.blp',
 )
 
 compiled_ui_dir_name = 'compiled_ui_files'
@@ -50,7 +51,7 @@ sudoku_sources = [
   'game_board.py',
   'game_manager.py',
   'sudoku_cell.py',
-  'help_dialog.py',
+  'how_to_play_dialog.py',
   'ui_helpers.py',
   'finished_overlay.py',
 ]

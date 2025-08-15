@@ -24,7 +24,7 @@ gi.require_version("Adw", "1")
 
 from gi.repository import Gio, Adw
 from .window import SudokuWindow
-from .help_dialog import HowToPlayDialog
+from .how_to_play_dialog import HowToPlayDialog
 
 
 class SudokuApplication(Adw.Application):
@@ -75,10 +75,8 @@ class SudokuApplication(Adw.Application):
 
     def on_how_to_play(self, action, param):
         """Show how to play dialog."""
-        dialog = HowToPlayDialog(self.props.active_window)
-        dialog.get_style_context().add_class("sudoku-dialog")
-        dialog.connect("response", lambda d, r: d.destroy())
-        dialog.show()
+        dialog = HowToPlayDialog()
+        dialog.present(self.props.active_window)
 
     def _on_close_request(self, *args):
         self.quit()

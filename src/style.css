@@ -1,4 +1,4 @@
-.sudoku-main-window {
+.sudoku-main-window, .how-to-play-dialog {
     background-color: #d2a56d;
 }
 
@@ -77,3 +77,11 @@ statuspage image {
     font-size: 11px;
     padding: 0.8px;
 }
+
+/* How to play dialog styling */
+/* .how-to-play-dialog .card {
+    background-color: rgba(247, 233, 213, 0.22);
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+} */

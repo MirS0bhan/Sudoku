@@ -18,15 +18,17 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from gi.repository import Adw, Gtk, Gio
+from gettext import gettext as _
 
 from .game_board import GameBoard
 from .game_manager import GameManager
 from .ui_helpers import UIHelpers
 from .difficulty_selection_dialog import DifficultySelectionDialog
+from .help_overlay import HelpOverlay
 from .finished_page import FinishedPage  # noqa: F401 Used in Blueprint
 
 
-@Gtk.Template(resource_path="/io/github/sepehr_rs/Sudoku/window.ui")
+@Gtk.Template(resource_path="/io/github/sepehr_rs/Sudoku/blueprints/window.ui")
 class SudokuWindow(Adw.ApplicationWindow):
     """Main application window."""
 
@@ -59,11 +61,18 @@ class SudokuWindow(Adw.ApplicationWindow):
         self.add_controller(gesture)
         action = Gio.SimpleAction.new("show-primary-menu", None)
         action.connect("activate", self.on_show_primary_menu)
+        action = Gio.SimpleAction.new("show-help-overlay", None)
+        action.connect("activate", self.on_show_help_overlay)
         self.add_action(action)
 
     def on_show_primary_menu(self, action, param):
         """Open the hamburger menu popover."""
         self.primary_menu_button.popup()
+
+    def on_show_help_overlay(self, action, param):
+        help_overlay = HelpOverlay()
+        help_overlay.set_transient_for(self)
+        help_overlay.present()
 
     def _get_grid_widget(self):
         frame = self.grid_container.get_first_child()
@@ -103,11 +112,6 @@ class SudokuWindow(Adw.ApplicationWindow):
             "toggled", self.game_manager.on_pencil_toggled
         )
 
-        self.finished_page.set_back_button_callback
-        (
-            self.game_manager.on_back_to_menu_clicked_after_finish
-        )
-
     def _setup_stack_observer(self):
         """Setup stack page change observer."""
         self.stack.connect("notify::visible-child", self.on_stack_page_changed)
@@ -128,9 +132,7 @@ class SudokuWindow(Adw.ApplicationWindow):
         self._show_difficulty_dialog()
 
     def _show_difficulty_dialog(self):
-        dialog = DifficultySelectionDialog(
-            on_select=self.on_difficulty_selected
-        )
+        dialog = DifficultySelectionDialog(on_select=self.on_difficulty_selected)
         dialog.present(self)
 
     def on_difficulty_selected(self, difficulty: float, difficulty_label: str):
